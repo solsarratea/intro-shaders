@@ -1,0 +1,46 @@
+#baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = "Programación de shaders con GLSL"
+
+[module]
+[module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+
+summaryLength = 30
+
+[[menu.main]]
+    name = " ⌂ inicio"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "+ info"
+    url = "/contenidos/"
+    weight = 2
+
+[params]
+  google_analytics_id=""
+  homepage_button_link = '/contenidos'
+  homepage_button_text = 'Más información'
+  homepage_intro = 'Curso introducorio a la programación de shaders en tiempo real con GLSL'
+  homepage_image = '/images/demo.gif'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "Curso introductorio a shaders con GLSL"
+    meta_og_title = "Programación de shaders con GLSL"
+    meta_og_type = "website"
+    meta_og_url = ""
+    meta_og_image = ""
+    meta_og_description = "Curso introductorio a shaders con GLSL"
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@solquemal"
+    meta_twitter_creator = "@solquemal"
+
+  [params.logo]
+      mobile = "/images/logo.svg"
+      standard  = "/images/logo.svg"

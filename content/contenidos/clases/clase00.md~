@@ -1,0 +1,21 @@
+---
+title: '03 Sobre las clases'
+date: 2019-02-11T19:27:37+10:00
+weight: 2
+---
+
+# Contenidos
+
+## Clase 1: Introducción GPU + sintaxis + shader simple
+Objetivo: Entender a shader como programa que recibe posiciones y devuelve valor para cada pixel en simultáneo.
+Coloreo: RGB
+
+## Clase 2: Reforzar concepto de shader cambiando el sistema de coordenadas y dibujar geometrías
+Objetivo: Tener presente el sistema de coordenadas (rangos de nuestras variables que describen posición en la pantalla) cuando queremos escribir un shader. Entender las SDF para dibujar geometrías simples.
+Coloreo: Cosine palette
+
+## Clase 3: Explorar geometrías procedurales
+Objetivo: Generar una “geometría” a partir de un procedimiento(loop), en donde cada paso es una combinación  de transformaciones simples: escalar, trasladar y rotar.
+Coloreo: hsv2rgb.
+
+# Dinámicas 

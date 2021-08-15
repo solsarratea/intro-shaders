@@ -1,0 +1,10 @@
+---
+title:Programación de shaders con GLSL
+date: 2018-11-28T15:14:39+10:00
+label: hi
+weight: 2
+---
+
+<br><br>
+
+El taller va a estar centrado en **la generación de imágenes visuales usando directamente la unidad de procesamiento gráfica (GPU).** Vamos a familiarizarnos con la sintáxis, escribirlos y caracterizarlos, entendiendo sus cualidades y sus limitaciones.
