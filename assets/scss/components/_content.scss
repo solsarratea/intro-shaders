@@ -128,3 +128,13 @@
     height: auto;
   }
 }
+
+.img-container{
+    flex-direction: column;
+    align-items: end;
+    display: flex;
+}
+
+.info{
+    margin-top: 0.5;
+}

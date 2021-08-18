@@ -15,8 +15,22 @@
     text-decoration: none;
   }
 }
-.button-white {
-  background: none;
-  color: red;
-  border: 2px solid #f00f0f;
+
+.button-red {
+    white-space: nowrap;
+    display: inline-block;
+    padding: 8px 15px 6px 15px;
+    background: red;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    border-radius: 3px;
+    margin: 1.5 em;
+    &:hover {
+        background-color: lighten(red, 20%);
+        text-decoration: none;
+    }
+
 }

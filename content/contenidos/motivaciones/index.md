@@ -2,6 +2,8 @@
 title: '00 Motivaciones'
 date: 2019-02-11T19:27:37+10:00
 weight: 2
+image: "/images/motiv.png"
+summary: "¿Qué relación tenemos con las computadoras? \" En tanto que yo domine la herramienta, yo doy al mundo mi sentido; cuando la herramienta me domina, su estructura conforma e informa la representación que tengo de mí mismo. La herramienta convivencial"
 ---
 
 # ¿Qué relación tenemos con las computadoras?
@@ -11,12 +13,14 @@ weight: 2
 >**La convivencialidad - Ivan Illich**
 
 
-La diferencia entre las palabrs, en el lenguaje natural, y el código puede pensarse como la diferencia entre contar y hacer. En estas clases vamos a experimentar a través de la creación de imágenes: fundamentos sobre programación; cómo comunicarnos con la GPU y aplicar conceptos matemáticos para generar arte.
+La diferencia entre las palabras, en el lenguaje natural, y el código puede pensarse como la diferencia entre contar y hacer. En estas clases vamos a experimentar a través de la creación de imágenes: fundamentos sobre programación; cómo comunicarnos con la GPU y aplicar conceptos matemáticos para generar arte.
 
 Entender las tecnologias de bajo nivel nos permite habitar nuevos espacios.
 
 
 # Computadora, tecnología y arte en la historia:
+
+![](/images/hombre.png)
 
 ### Artistas Pioneros
 
@@ -27,7 +31,7 @@ Entender las tecnologias de bajo nivel nos permite habitar nuevos espacios.
 
 - [John Whitney](https://www.awn.com/mag/issue2.5/2.5pages/2.5moritzwhitney.html) pionero en animaciones. [Acá](https://www.youtube.com/watch?v=cP5Mj6ZvZJc) menciona varios aspectos de su vida y su trabajo. Y de las artes electronicas en el campo visual.
 
-Para leer más, recomiendo [archivos de atari](https://www.atariarchives.org) y [este archivo de la historia](http://www.cs.cmu.edu/~ph/nyit/masson/history.htm)
+Para leer más, recomiendo [archivos de atari](https://www.atariarchives.org) y [este archivo de la historia](http://www.cs.cmu.edu/~ph/nyit/masson/history.htm) de la computación gráfica.
 
 
 

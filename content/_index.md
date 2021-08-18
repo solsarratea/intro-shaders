@@ -1,5 +1,5 @@
 ---
-title: 'Programación de shaders en GLSL'
+title: 'Programación de shaders con GLSL'
 date: 2018-11-28T15:14:39+10:00
 ---
 
