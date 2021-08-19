@@ -1,12 +1,15 @@
 <div class="summary mb-2">
-  <h2 class="title-summary"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-<div class="img-container">
-     {{ if .Params.image }}
-     <img alt="{{ .Title }}" src="{{ .Params.image }}" />
-     <br>  <br>
-  {{ end}}
-     <span class="button-red"><a href="{{ .Permalink }}">LEER MÁS</a></span>
-     <br> <br>
-  </div>
- <p>{{ .Summary }}</p>
+
+    <h1 class="title-summary">{{ .Title }}</h1>
+     <hr>
+     <div class="img-container">
+       {{ if .Params.image }}
+       <img alt="{{ .Title }}" src="{{ .Params.image }}" />
+       <br>  <br>
+       {{ end}}
+       <span class="button-red"><a href="{{ .Permalink }}">LEER MÁS</a></span>
+       <br> <br>
+     </div>
+  <p>{{ .Summary }}</p>
+
 </div>
