@@ -1,6 +1,6 @@
 #baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = "Programación de shaders con GLSL"
+title = "Livecoding shaders con GLSL"
 
 [module]
 [module.hugoVersion]
@@ -32,7 +32,7 @@ summaryLength = 30
 
   [params.homepage_meta_tags]
     meta_description = "Curso introductorio a shaders con GLSL"
-    meta_og_title = "Programación de shaders con GLSL"
+    meta_og_title = "Livecoding shaders con GLSL"
     meta_og_type = "website"
     meta_og_url = ""
     meta_og_image = ""

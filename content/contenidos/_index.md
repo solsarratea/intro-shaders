@@ -1,5 +1,5 @@
 ---
-title: 'Programación de shaders con GLSL'
+title: 'Livecoding shaders con GLSL'
 date: 2018-11-28T15:14:39+10:00
 weight: 2
 
@@ -7,12 +7,12 @@ weight: 2
 
 <br><br>
 
-El taller va a estar centrado en **la generación de imágenes visuales usando directamente la unidad de procesamiento gráfica (GPU).** 
+El taller va a estar centrado en **la generación de imágenes visuales usando directamente la unidad de procesamiento gráfica (GPU).**
 Esto lo realizaremos a través de escribir un programa, shader, con GLSL (lenguaje de shading de openGL, una interfaz que nos habilita comunicarnos con el hardware gráfico).
 
 Vamos a familiarizarnos con la sintáxis, similar a la de C. Y escribir el código a tiempo real (live codear) un shader usando glslEditor.
 
-#### Objetivos: 
+#### Objetivos:
 
 - Adquirir nociones básicas con GLSL.
 
@@ -21,6 +21,3 @@ Vamos a familiarizarnos con la sintáxis, similar a la de C. Y escribir el códi
 - Acercar al código creativo como práctica mundana.
 
 - Crear, mostrar y participar.
-
-
-
