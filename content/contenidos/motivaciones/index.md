@@ -8,6 +8,9 @@ summary: "¿Qué relación tenemos con las computadoras? \" En tanto que yo domi
 
 # ¿Qué relación tenemos con las computadoras?
 
+![](/images/ww.png)
+
+
 >"En tanto que yo domine la herramienta, yo doy al mundo mi sentido; cuando la herramienta me domina, su estructura conforma e informa la representación que tengo de mí mismo. La herramienta convivencial es la que me deja la mayor latitud y el mayor poder para modificar el mundo en la medida de mi intención."
 >
 >**La convivencialidad - Ivan Illich**
@@ -20,9 +23,18 @@ Entender las tecnologias de bajo nivel nos permite habitar nuevos espacios.
 
 # Computadora, tecnología y arte en la historia:
 
+### ¿Cuáles son los orígenes de la computación gráfica? 
+
 ![](/images/hombre.png)
 
-### Artistas Pioneros
+### ¿Qué sectores sociales tuvieron/tienen más privilegio? 
+>"Necesitamos regeneración, no resurrección, y las posibilidades que tenemos para nuestra reconstitución incluyen el sueño utópico de un mundo monstruoso sin géneros. **Manifiesto Cibor - Donna Haraway**"
+
+Habitar nuevos espacios en tecnología nos permite regenerarnos. Y ser creadores de tecnología es posible en el contexto que vivimos.
+
+
+
+## Referencias históricas de artistas pioneros
 
 - [Lillian Schwart](https://www.google.com/search?client=firefox-b-d&q=Lillian+Schwartz)
 [En la siguiente entrevista](https://vimeo.com/103817431) comparte reflexiones sobre la creatividad usando computadoras desdesde su experiencia.
@@ -34,6 +46,20 @@ Entender las tecnologias de bajo nivel nos permite habitar nuevos espacios.
 Para leer más, recomiendo [archivos de atari](https://www.atariarchives.org) y [este archivo de la historia](http://www.cs.cmu.edu/~ph/nyit/masson/history.htm) de la computación gráfica.
 
 
+# Livecoding, comunidad y proyectos de código abierto 
+
+### **El saber es una construcción social comunitaria.**
+
+-  [CliC: Colectivo de Live Coding](https://colectivo-de-livecoders.gitlab.io/)
+-  [Livecoding NYC](https://livecode.nyc/)
+-  [TOPLAP](https://toplap.org/)
+
+### **Repositorios de código : proyectos que se pueden ver, modificar, usar y distribuir**
+
+- [Glitch.me](https://glitch.com/)
+- [Github](https://github.com/)
+- [Gitlab](https://about.gitlab.com/)
+- [Sourcehut](https://sourcehut.org/)
 
 
-
+>"El mero proceso de construcción es, por ende, entendido como un incansable, iterativo y continuo revestimiento. El Xenofeminismo busca ser una arquitectura mutable que, como el software de código abierto, se mantiene disponible a perpetua modificación y mejora siguiendo el impulso navegacional del razonamiento militante ético. Abierto, sin embargo, no significa sin dirigir. Los sistemas más durables en el mundo le deben su estabilidad a la manera en la que entrenamos al orden para emerger como una “mano invisible” de la espontaneidad aparente, o explotar la inercia de la inversión y la sedimentación. " **Paridad 0x10 - XF Manifiesto**
