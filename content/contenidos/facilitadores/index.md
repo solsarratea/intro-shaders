@@ -20,7 +20,7 @@ Es programadora y artista computacional. Construye sistemas complejos a partir d
 Es miembro de CliC; Colectivo de Live Coders.
  
 Sus proyectos son alentados por comunidades de código abierto; aprendizaje alternativo; y por la necesidad de construir una identidad propia.
-En 2020 participó en el Recurse Center - NYC; y en la academia de verano de Hackers&Designers - NL.  Fue ayudante en workshops introductorios a GLSL dictados por Char Stiles en CODAME. Dictó cursos sobre Programación y GLSL en WIP: Arte Digital. En 2021, lideró curso sobre “Alquimia Digital” en Hyperlink Academy.  Actualmente trabaja como desarrolladora en computación gráfica y artista VFX en Artiphon.
+En 2020 participó en el Recurse Center - NYC; y en la academia de verano de Hackers&Designers - NL.  Fue ayudante en workshops introductorios a GLSL dictados por Char Stiles en CODAME. Dictó cursos sobre Programación y GLSL en WIP: Arte Digital. En 2021, lideró curso sobre [Alquimia Digital en Hyperlink Academy](https://hyperlink.academy/courses/digital-alchemy/89).  Actualmente trabaja como desarrolladora en computación gráfica y artista VFX.
 
 ![](/images/sol.jpeg)
 ![](/images/sol.jpeg)
