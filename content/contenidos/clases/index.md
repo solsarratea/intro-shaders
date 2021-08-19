@@ -28,12 +28,13 @@ Cada clase dura 2hs y estará dada por la siguiente estructura:
 Introducción a la computación gráfica y GLSL. Vemos su sintáxis básica. Exploramos [glsl_Editor](https://thebookofshaders.com/edit.php) para escribir un programa.
 
 Introducimos sistemas de coordenadas: uv y uvN para posicionar a un píxel. Exploramos el espacio de color RGB.
-Introducimos transformaciones simples escalar y rotar.
+
+Bonus: Introducimos transformaciones simples: escalar y rotar.
 
 ##### Objetivo: Entender a un shader como programa que recibe posiciones y devuelve valor para cada píxel en simultáneo.
 
 # **Segundo Encuentro** 
-## Sistemas de coordenadas y dibujo de geometrias
+## Sistemas de coordenadas y dibujo de geometrías
 #### Fecha: 14/09/2021
 
 Seguiremos con los fundamentales sobre los fragment shaders, introducimos sistemas de coordenadas polares. Dibujamos geometrías simples a través de las SDFs(funciones de distancia con signo).
@@ -44,8 +45,8 @@ Bonus: Exploremos la función coseno para generar paletas de color.
 #####  Objetivo:  Tener presente el sistema de coordenadas (rangos de nuestras variables que describen posición en la pantalla) cuando queremos escribir un shader. 
 
 
-# ** Tercer  Encuentro** 
-## Explorar geometrias procedurales
+# **Tercer  Encuentro** 
+## Explorar geometrías procedurales
 #### Fecha: 21/09/2021
 
 Introducimos los ciclos(loop) como estructuras de control del flujo del programa, y como al combinarla con transformaciones simples que nos permiten crear estructuras complejas.
