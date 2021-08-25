@@ -19,6 +19,11 @@
 
   {{ block "header_css" . }}{{ end }}
 
+  {{ if (eq .Params.display "graph") }}
+  {{ partial "glsl-header.html" . }}
+  {{ end }}
+
+
 </head>
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
@@ -48,9 +53,17 @@
       </div>
     </div>
     {{ else }}
+     {{ if (eq .Params.display "graph") }}
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      {{ block "main" . }}
+       {{ end }}
+    </div>
+    {{ else }}
+
     {{ block "main" . }}
     {{ end }}
-    {{ end}}
+    {{ end }}
+    {{ end }}
   </div>
 
   {{ partial "sub-footer.html" . }}
@@ -64,6 +77,10 @@
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
   {{ else }}
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+  {{ end }}
+
+  {{ if (eq .Params.display "graph") }}
+  {{ partial "glsl-aux.html" . }}
   {{ end }}
 
   {{ partial "google-analytics.html" . }}

@@ -72,3 +72,39 @@ body {
 //     }
 //   }
 // }
+#glsl_editor {
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+canvas.ge_canvas {
+	float: top;
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70%;
+}
+canvas {
+	border: solid 5px black;
+}
+.CodeMirror {
+	font-size: 14px;
+	line-height: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70%;
+}
+
+.cm-s-default {
+	.cm-variable-3 {
+		color: #f00;
+	}
+	.cm-keyword {
+		color: #f00;
+	}
+}
+
+.ge_editor {
+	background-color: black !important;
+}

@@ -2,6 +2,9 @@
 languageCode = 'en-us'
 title = "Livecoding shaders con GLSL"
 
+[markup.goldmark.renderer]
+    unsafe= true
+
 [module]
 [module.hugoVersion]
     extended = true

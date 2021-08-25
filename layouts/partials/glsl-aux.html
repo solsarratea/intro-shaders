@@ -1,0 +1,216 @@
+<script type='text/javascript'>
+var preFunction = '\n\
+#ifdef GL_ES\n\
+precision mediump float;\n\
+#endif\n\
+\n\
+#define PI 3.14159265359\n\
+\n\
+uniform vec2 u_resolution;\n\
+uniform vec2 u_mouse;\n\
+uniform float u_time;\n\
+\n\
+float lineJitter = 0.5;\n\
+float lineWidth = 10.0;\n\
+float gridWidth = 1.7;\n\
+float scale = 0.001;\n\
+float zoom = 2.3;\n\
+vec2 offset = vec2(0.5);\n\
+vec2 mouse = u_mouse;\n\
+vec2 resolution = u_resolution;\n\
+float on = 1.;\n\
+float off = 0.;\n\
+\n';
+
+var postFunction = '\n\
+float rand(vec2 co){\n\
+return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);\n\
+}\n\
+\n\
+vec3 plot2D(in vec2 _st, in float _width ) {\n\
+const float samples = 7.0;\n\
+\n\
+vec2 steping = _width*vec2(scale)/samples;\n\
+\n\
+float count = 0.0;\n\
+float mySamples = 0.0;\n\
+for (float i = 0.0; i < samples; i++) {\n\
+  for (float j = 0.0;j < samples; j++) {\n\
+      if (i*i+j*j>samples*samples) \n\
+          continue;\n\
+      mySamples++;\n\
+      float ii = i + lineJitter*rand(vec2(_st.x+ i*steping.x,_st.y+ j*steping.y));\n\
+      float jj = j + lineJitter*rand(vec2(_st.y + i*steping.x,_st.x+ j*steping.y));\n\
+      float f = function(_st.x+ ii*steping.x)-(_st.y+ jj*steping.y);\n\
+      count += (f>0.) ? 1.0 : -1.0;\n\
+  }\n\
+}\n\
+vec3 color = vec3(1.0);\n\
+if (abs(count)!=mySamples)\n\
+  color = vec3(abs(float(count))/float(mySamples)) + vec3(.8,0.,.0);\n\
+return color;\n\
+}\n\
+\n\
+vec3 grid2D( in vec2 _st, in float _width ) {\n\
+float axisDetail = _width*scale;\n\
+if (abs(_st.x)<axisDetail || abs(_st.y)<axisDetail) \n\
+  return 1.0-vec3(0.65,0.65,1.0);\n\
+if (abs(mod(_st.x,1.0))<axisDetail || abs(mod(_st.y,1.0))<axisDetail) \n\
+  return 1.0-vec3(0.80,0.80,1.0);\n\
+if (abs(mod(_st.x,0.25))<axisDetail || abs(mod(_st.y,0.25))<axisDetail) \n\
+  return 1.0-vec3(0.95,0.95,1.0);\n\
+return vec3(0.0);\n\
+}\n\
+\n\
+void main(){\n\
+vec2 st = (gl_FragCoord.xy/u_resolution.xy)-offset;\n\
+st.x *= u_resolution.x/u_resolution.y;\n\
+\n\
+scale *= zoom;\n\
+st *= zoom;\n\
+\n\
+vec3 color = plot2D(st,lineWidth);\n\
+color -= grid2D(st,gridWidth).rrr;\n\
+\n\
+gl_FragColor = vec4(color,1.0);\n\
+}';
+  var funct = 'float function (float x) {\n\
+float y = x;\n\
+return y;\n\
+}';
+
+  var funct2 = 'float function (float x) {\n\
+float y = x;\n\
+return y;\n\
+}\n\
+vec3 setChannel () { \n\
+vec3 red = vec3(1.,0.,0.)*on;\n\
+vec3 green = vec3(0.,1.,0.)*off;\n\
+vec3 blue = vec3(0.,0.,1.)*off;\n\
+return red+green+blue; \n\
+}';
+
+  
+
+var postFunction2 = '\n\
+void main(){\n\
+vec2 st = (gl_FragCoord.xy/u_resolution.xy)-offset;\n\
+st.x *= u_resolution.x/u_resolution.y;\n\
+\n\
+scale *= zoom;\n\
+st *= zoom;\n\
+\n\
+vec3 color;\n\
+color= setChannel()*function(st.x);\n\
+gl_FragColor = vec4(color,1.0);\n\
+}';
+
+  var funct3 = 'float function (float x) {\n\
+float y = x;\n\
+return y;\n\
+}\n\
+vec3 setChannel() { \n\
+return vec3(1.,0.,0.);\n\
+}\n\
+vec2 setCoordinates() { \n\
+vec2 st = (gl_FragCoord.xy/u_resolution.xy);\n\
+return st;\n\
+}';
+
+  var postFunction3 = '\n\
+void main(){\n\
+vec2 st = setCoordinates();\n\
+st.x *= u_resolution.x/u_resolution.y;\n\
+\n\
+scale *= zoom;\n\
+st *= zoom;\n\
+\n\
+vec3 color;\n\
+color= setChannel()*function(st.x);\n\
+gl_FragColor = vec4(color,1.0);\n\
+}';
+function loadjscssfile(filename, filetype, callback){
+      if (filetype=="js") { //if filename is a external JavaScript file
+          var fileref = document.createElement('script')
+          fileref.setAttribute("type","text/javascript")
+          fileref.setAttribute("src", filename)
+      }
+      else if (filetype=="css") { //if filename is an external CSS file
+          var fileref = document.createElement("link")
+          fileref.setAttribute("rel", "stylesheet")
+          fileref.setAttribute("type", "text/css")
+          fileref.setAttribute("href", filename)
+      }
+
+      fileref.onload = callback;
+      fileref.onreadystatechange = callback;
+
+      if (typeof fileref != "undefined") {
+          document.getElementsByTagName("head")[0].appendChild(fileref)
+      }
+  }
+
+
+  window.onload = function() {
+      if (window.GlslEditor && window.GlslEditor) {
+          init();
+      }
+      else {
+          console.log('Try to load a local glslEditor');
+          loadjscssfile('src/glslCanvas/build/GlslCanvas.js', 'js');
+          loadjscssfile('src/glslEditor/build/glslEditor.css', 'css');
+          loadjscssfile('src/glslEditor/build/glslEditor.js', 'js', init);
+      }
+  };
+
+  function init() {
+     
+      window.glslEditor = new GlslEditor('#glsl_editor', {
+          canvas_width: 600,
+          canvas_height: 350,
+          canvas_follow: true,
+          canvas_float: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag_header: preFunction,
+          frag_footer: postFunction,
+          frag: funct,
+
+          multipleBuffers: true
+      });
+
+      window.glslEditor = new GlslEditor('#glsl_editor_2', {
+          canvas_width: 600,
+          canvas_height: 350,
+          canvas_follow: true,
+          canvas_float: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag_header: preFunction,
+          frag_footer: postFunction2,
+          frag: funct2,
+          multipleBuffers: true
+      });
+
+      
+      window.glslEditor = new GlslEditor('#glsl_editor_3', {
+          canvas_width: 600,
+          canvas_height: 350,
+          canvas_follow: true,
+          canvas_float: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag_header: preFunction,
+          frag_footer: postFunction3,
+          frag: funct3,
+          multipleBuffers: true
+      });
+     // Fixme
+     // <canvas class="glslCanvas" id="redView" width="200" height="200"></canvas>
+     // const redView = document.getElementById('redView');
+     // var fragmentShader = preFuntion + funct+postFunction;
+     // redView.setAttribute('data-fragment', fragmentShader) 
+  
+                                                          
+  }
+</script>
