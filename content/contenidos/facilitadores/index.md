@@ -1,8 +1,10 @@
 ---
-title: '03 Sobre Nosotres'
+title: '02 Sobre Nosotres'
 date: 2019-02-11T19:27:37+10:00
 weight: 2
 summary: " "
+boton: "LEER MÁS"
+barra: "contenidos"
 ---
 
 ## NODO Centro Cultural Digital

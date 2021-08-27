@@ -1,9 +1,13 @@
 ---
-title: "Ninja"
+title: '00 Ninja'
 date: 2021-08-17T02:13:03-03:00
-permalink: /herramientas
+permalink: /ninja
 display: "graph"
-layout: single
+summary: "Explorador de funciones"
+boton: "entrenar"
+image: "/images/ninja.gif"
+barra: "herramientas"
+
 ---
 # Explorador de funciones 
 

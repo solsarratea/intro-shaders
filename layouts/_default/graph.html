@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ block "meta_tags" . }}{{end}}
+  <link rel="icon" href="{{ "favicon.png" | absURL}}">
+
+  {{ if .Site.IsServer }}
+  {{ $style := resources.Get "scss/style.scss" | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
+  {{ else }}
+  {{ $style := resources.Get "scss/style.scss" | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" false) }}
+  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
+  {{ end }}
+
+  <script type='text/javascript' src='https://thebookofshaders.com/glslCanvas/GlslCanvas.js'></script>
+  <link type='text/css' rel='stylesheet' href='https://thebookofshaders.com/glslEditor/glslEditor.css'>
+  <script type='application/javascript' src='https://thebookofshaders.com/glslEditor/glslEditor.js'></script>
+
+  <style>
+
+
+      #glsl_editor {
+          display: block;
+          margin-top: auto;
+          margin-bottom: auto;
+      }
+
+      canvas.ge_canvas {
+          float: top;
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 1200px;
+
+      }
+      canvas {
+          border: solid 5px black;
+      }
+
+      .CodeMirror {
+
+          font-size: 14px;
+          line-height: 1.5em;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 700px;
+      }
+
+      .cm-s-default .cm-variable-3 {
+          color: #708;
+      }
+
+      .cm-s-default .cm-keyword {
+          color: #708;
+      }
+      .ge_editor{
+          background-color: transparent;
+      }
+
+  </style>
+</head>
+<body>
+ <div class="container">
+          {{ block "main" . }}
+          {{ end }}
+        </div>
+
+  <div id='glsl_editor'></div>
+  </div>
+    </body>
+</html>
