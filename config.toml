@@ -23,6 +23,17 @@ summaryLength = 30
     url = "/contenidos/"
     weight = 2
 
+[[menu.main]]
+    name = "+ ninja"
+    url = "/herramientas/"
+    weight = 4
+
+[[menu.main]]
+    name = "clases"
+    url = "/clases/"
+    weight = 3
+
+
 [params]
   google_analytics_id=""
   homepage_button_link = '/contenidos'

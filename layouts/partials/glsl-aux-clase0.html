@@ -1,0 +1,219 @@
+<script id="fragmentShader-init" type="x-shader/x-fragment">
+  // Author: @solquemal
+  // Title: Clase 0 - Intro a shaders 
+
+#ifdef GL_ES
+ precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+ void main() {
+     gl_FragColor = vec4(0.5);
+
+ }
+
+
+
+
+
+
+
+
+
+
+</script>
+<script id="fragmentShader-0" type="x-shader/x-fragment">
+  // Author: @solquemal
+  // Title: Clase 0 - Intro a shaders 
+
+#ifdef GL_ES
+ precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+ void main() {
+     gl_FragColor = vec4(0.5);
+
+ }
+
+
+
+
+
+
+
+
+
+
+</script>
+<script id="fragmentShader-1" type="x-shader/x-fragment">
+  // Author: @solquemal
+  // Title: Clase 0 - Intro a shaders 
+
+#ifdef GL_ES
+ precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+ void main() {
+     gl_FragColor = vec4(0.5);
+
+ }
+
+
+
+
+
+
+
+
+
+
+</script>
+<script id="fragmentShader-2" type="x-shader/x-fragment">
+  // Author: @solquemal
+  // Title: Clase 0 - Intro a shaders 
+
+#ifdef GL_ES
+ precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+ void main() {
+     gl_FragColor = vec4(0.5);
+
+ }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script id="fragmentShader-bonus" type="x-shader/x-fragment">
+  // Author: @solquemal
+  // Title: Clase 0 - Intro a shaders -  0
+
+#ifdef GL_ES
+  precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+  void main() {
+      // Obtenemos la posicion del pixel
+      vec2 uv = gl_FragCoord.xy/u_resolution.xy *2.-1.; vec2 st = uv;
+      uv.x *= u_resolution.x/u_resolution.y;
+      
+      //Aplicamos ransformaciones
+      // Rotacion
+      float a = u_time*-0.400;
+      uv.yx *= mat2(cos(a*.2),sin(a),-sin(a),cos(a*.2));
+      // Escalar
+ 	  uv *= min(1./dot(uv,uv),10.); //pow(length(uv),2.0); == dot(uv,uv)
+      
+      // Damos color
+      vec3 color;
+      color.r = sin(distance(uv.x,0.)*uv.x+u_time*-0.448);
+      color.b = sin(5.744+distance(uv.y,0.)*uv.y+u_time*0.5);
+      color.g = cos(distance(uv.x,0.)*-uv.x+u_time*0.9);
+      
+      color *=0.042/dot(color,st.xyy)*1.616;
+      gl_FragColor = vec4(color,1.0);
+
+  } 
+</script>
+
+
+<script type='text/javascript'>
+  window.frag  = document.getElementById( 'fragmentShader-init' ).textContent;
+
+  document.getElementById("checkpointcero").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-init' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+
+  document.getElementById("checkpointcero").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-0' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointuno").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-1' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointdos").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-2' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("bonus").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-bonus' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+
+  };
+
+  function displayDate()
+  {
+      document.getElementById("demo").innerHTML=Date();
+  }
+
+function loadjscssfile(filename, filetype, callback){
+      if (filetype=="js") { //if filename is a external JavaScript file
+          var fileref = document.createElement('script')
+          fileref.setAttribute("type","text/javascript")
+          fileref.setAttribute("src", filename)
+      }
+      else if (filetype=="css") { //if filename is an external CSS file
+          var fileref = document.createElement("link")
+          fileref.setAttribute("rel", "stylesheet")
+          fileref.setAttribute("type", "text/css")
+          fileref.setAttribute("href", filename)
+      }
+
+      fileref.onload = callback;
+      fileref.onreadystatechange = callback;
+
+      if (typeof fileref != "undefined") {
+          document.getElementsByTagName("head")[0].appendChild(fileref)
+      }
+  }
+
+
+  window.onload = function() {
+      if (window.GlslEditor && window.GlslEditor) {
+          init();
+      }
+      else {
+          console.log('Try to load a local glslEditor');
+          loadjscssfile('src/glslCanvas/build/GlslCanvas.js', 'js');
+          loadjscssfile('src/glslEditor/build/glslEditor.css', 'css');
+          loadjscssfile('src/glslEditor/build/glslEditor.js', 'js', init);
+      }
+  };
+
+  function init() {
+     
+      window.glslEditor = new GlslEditor('#glsl_clase0', {
+          canvas_height: 500,
+          canvas_width: 700,
+          canvas_draggable: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag: window.frag,
+          multipleBuffers: true,
+      });
+  }
+</script>
