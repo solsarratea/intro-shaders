@@ -11,9 +11,10 @@ barra: "herramientas"
 ---
 # Explorador de funciones 
 
-Podes cambiar el cuerpo de la función  **function** para visibilizar distintas funciones.
+Podes cambiar el cuerpo de la función  **function** para visibilizar distintas funciones. 
+Chequen el [Glossary](https://thebookofshaders.com/glossary/)
 
-## 1 DIMENSION 
+## 1 DIMENSIÓN 
 ### Valores de y en funcion de x 
 <div id='glsl_editor'></div>
 
