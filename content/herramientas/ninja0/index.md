@@ -11,8 +11,10 @@ barra: "herramientas"
 ---
 # Explorador de funciones 
 
+Inspirado en 
 Podes cambiar el cuerpo de la función  **function** para visibilizar distintas funciones. 
 Chequen el [Glossary](https://thebookofshaders.com/glossary/)
+Y [lista sugerida con funciona](https://pad.riseup.net/p/entrenamiento-funcional)
 
 ## 1 DIMENSIÓN 
 ### Valores de y en funcion de x 
