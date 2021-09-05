@@ -1,12 +1,9 @@
-<script id="fragmentShader-init" type="x-shader/x-fragment">// Author: @solquemal
-// Title: Clase 0 - Intro a shaders 
-
-#ifdef GL_ES
+<script id="fragmentShader-init" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders
 precision mediump float;
-#endif
 
-uniform vec2 u_resolution;
 uniform float u_time;
+uniform vec2 u_resolution;
 
 void main() {
    gl_FragColor = vec4(0.5);
@@ -23,25 +20,22 @@ void main() {
 
 
 </script>
-<script id="fragmentShader-0" type="x-shader/x-fragment">// Author: @solquemal
-// Title: Clase 0 - Intro a shaders 
-
-#ifdef GL_ES
+<script id="fragmentShader-0" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders
 precision mediump float;
-#endif
 
 // Variables uniformes: 
 // puente entre CPU - GPU que nos permite mandar información
 // Por ejemplo : tiempo
 
-uniform vec2 u_resolution; // [( width , height )]
 uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
 
 void main() {
-    //Declaracion de numeros
-    float r = 1.;
-    float g = 0.;
-    float b = 1.;
+    //Declaración de números
+    float r = 1.; // [ r ] := [ 1. ]
+    float g = 0.; // [ g ] := [ 1. ]
+    float b = 1.; // [ b ] := [ 1. ]
     gl_FragColor = vec4(r,g,b,1.); // [ (r, g ,b , a) ]
 
     //Declaracion de vectores
@@ -56,21 +50,18 @@ void main() {
 </script>
 <script id="fragmentShader-1" type="x-shader/x-fragment">// Author: @solquemal
 // Title: Clase 0 - Intro a shaders 
-
-#ifdef GL_ES
- precision mediump float;
-#endif
+precision mediump float;
 
 // Variables uniformes: 
 // puente entre CPU - GPU que nos permite mandar información
 // Por ejemplo : tiempo
 
-uniform vec2 u_resolution; // [( width , height )]
 uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
+
 
  void main() {
-     vec3 rgb = vec3(0.960,0.113,0.003); // [( 0.5,0.5,0.5 )]
-     vec3 color;                   // [( 0.5,0.5,0.5 )]
+     vec3 color = vec3(0.960,0.113,0.003); // [( 0.5,0.5,0.5 )]
     
      //Obtenemos la posición del píxel
      vec2 uv = gl_FragCoord.xy/u_resolution; // [( x,y )]
@@ -91,7 +82,7 @@ uniform float u_time;      // [ contador ]
 	 
      //Posicionamos el centro de la pantalla en el medio
      uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
-     color.rb = uv;  //[( r,b )] <- [( x,y )]
+     //color.rb = uv;  //[( r,b )] <- [( x,y )]
     
      
      gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
@@ -100,18 +91,15 @@ uniform float u_time;      // [ contador ]
 
 </script>
 <script id="fragmentShader-2" type="x-shader/x-fragment">// Author: @solquemal
-// Title: Clase 0 - Intro a shaders 
-
-#ifdef GL_ES
-precision mediump float;
-#endif
+// Title: Clase 0 - Intro a shaders
+ precision mediump float;
 
 // Variables uniformes: 
 // puente entre CPU - GPU que nos permite mandar información
 // Por ejemplo : tiempo
 
-uniform vec2 u_resolution; // [( width , height )]
 uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
 
 void main() {
     vec2 uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
