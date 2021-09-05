@@ -11,13 +11,15 @@ barra: "herramientas"
 ---
 # Explorador de funciones 
 
-Inspirado en 
-Podes cambiar el cuerpo de la función  **function** para visibilizar distintas funciones. 
-Chequen el [Glossary](https://thebookofshaders.com/glossary/)
-Y [lista sugerida con funciona](https://pad.riseup.net/p/entrenamiento-funcional)
+Inspirado en <a target="_blank" href="https://thebookofshaders.com/05/">este capítulo </a>
+de **The Book of Shaders**.
+Tenemos un medio para explorar, entender y asociar visualmente funciones en distintos codominios.
+
+Podés cambiar el cuerpo de la función **function** para visibilizar distintas funciones. 
+Chequen la <a target="_blank" href="https://collab.solarpunk.cool/p/funciones-cool">lista con funciones</a>
 
 ## 1 DIMENSIÓN 
-### Valores de y en funcion de x 
+### Valores de y en función de x
 <div id='glsl_editor'></div>
 
 ## 2 DIMENSIONES 
