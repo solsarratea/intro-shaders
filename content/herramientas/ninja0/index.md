@@ -16,7 +16,7 @@ de **The Book of Shaders**.
 Tenemos un medio para explorar, entender y asociar visualmente funciones en distintos codominios.
 
 Podés cambiar el cuerpo de la función **function** para visibilizar distintas funciones. 
-Chequen la <a target="_blank" href="https://collab.solarpunk.cool/p/funciones-cool">lista con funciones</a>
+Chequen la siguiente <a target="_blank" href="https://collab.solarpunk.cool/p/funciones-cool">lista</a>
 
 ## 1 DIMENSIÓN 
 ### Valores de y en función de x

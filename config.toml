@@ -36,8 +36,8 @@ summaryLength = 30
 
 [params]
   google_analytics_id=""
-  homepage_button_link = '/contenidos'
-  homepage_button_text = 'Más información'
+  homepage_button_link = '/clases'
+  homepage_button_text = 'IR A LAS CLASES'
   homepage_intro = 'Curso introducorio a la programación de shaders en tiempo real con GLSL'
   homepage_image = '/images/demo.gif'
 

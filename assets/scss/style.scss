@@ -133,3 +133,16 @@ canvas {
             }
         }
 }
+.disable_link{
+    pointer-events: none;
+}
+
+.disable {
+    background-color: gray !important;
+    content:'ADD';
+
+}
+.disable:hover:after{
+    content:' PROXIMAMENTE';
+    color: black;
+}
