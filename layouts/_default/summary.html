@@ -7,7 +7,9 @@
        <img alt="{{ .Title }}" src="{{ .Params.image }}" />
        <br>  <br>
        {{ end}}
-       <span class="button-red"><a href="{{ .Permalink }}">LEER MÁS</a></span>
+       {{ if .Params.boton }}
+       <span class="button-red"><a href="{{ .Permalink }}">{{.Params.boton}}</a></span>
+       {{ end }}
        <br> <br>
      </div>
   <p>{{ .Summary }}</p>

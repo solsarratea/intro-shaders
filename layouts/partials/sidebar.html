@@ -2,10 +2,14 @@
 <div class="docs-menu">
   <h4>{{ .Section | humanize }}</h4>
   <ul>
-    {{ range where .Site.RegularPages "Section" .Section }}
+    {{  $current:= .Section }}
+
+    {{ range  .Site.Pages }}
+    {{if (eq  .Params.barra $current) }}
     <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}active {{ end }}">
       <a href="{{ .Permalink }}">{{ .Title }}</a>
     </li>
     {{ end }}
+    {{end}}
   </ul>
 </div>

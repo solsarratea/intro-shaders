@@ -4,6 +4,8 @@ date: 2019-02-11T19:27:37+10:00
 weight: 2
 image: "/images/motiv.png"
 summary: "¿Qué relación tenemos con las computadoras? \" En tanto que yo domine la herramienta, yo doy al mundo mi sentido; cuando la herramienta me domina, su estructura conforma e informa la representación que tengo de mí mismo. La herramienta convivencial"
+boton: "LEER MÁS"
+barra: "contenidos"
 ---
 
 # ¿Qué relación tenemos con las computadoras?

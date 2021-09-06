@@ -5,8 +5,9 @@
 {{ define "main" }}
 
 <h1 class="title">{{ .Title }}</h1>
-<span class="button"><a href="https://docs.google.com/forms/d/1H5GMAi0N4jvtOKzeTVm2Jt-Lw_VPplLmk_ju76Yia_k/edit">Inscribirme</a></span>
-
+{{if .Params.boton }}
+<span class="button"><a href="https://docs.google.com/forms/d/1H5GMAi0N4jvtOKzeTVm2Jt-Lw_VPplLmk_ju76Yia_k/edit">{{.Params.boton}}</a></span>
+{{end}}
 <div class="content">
   {{ .Content }}
 </div>

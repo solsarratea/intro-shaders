@@ -4,6 +4,8 @@ date: 2019-02-11T19:27:37+10:00
 weight: 2
 image: "/images/class.gif"
 summary: "Los encuentros serán virtuales y usaremos Big Blue Button para gestionarlas. Tendremos como referencia teórica al libro \"The book of Shaders\" escrito por Patricio Gonzalez Vivo. Cada clase dura 2hs y estará dada por la siguiente estruc"
+boton: "LEER MÁS"
+barra: "contenidos"
 ---
 
 Los encuentros serán virtuales y usaremos [Big Blue Button](https://bigbluebutton.org/) para gestionarlas.
@@ -54,5 +56,5 @@ Veremos como doblar el espacio nos permite generar geometrías procedurales, o f
 
 Bonus: Exploremos el espacio de color HSV.
 
-##### Objetivo:  Generar una “geometría” a partir de un procedimiento (loop), en donde cada paso es una combinación  de transformaciones simples: escalar, trasladar y rotar.
+##### Objetivo:  Generar una “geometría” a partir de un ciclo(loop), en donde cada paso es una combinación  de transformaciones simples: escalar, trasladar y rotar.
 

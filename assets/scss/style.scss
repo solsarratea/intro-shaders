@@ -72,6 +72,10 @@ body {
 //     }
 //   }
 // }
+
+.full #glsl_editor{
+    margin:0 !important;
+}
 #glsl_editor {
 	display: block;
 	margin-top: auto;
@@ -85,6 +89,7 @@ canvas.ge_canvas {
 	margin-right: auto;
 	max-width: 70%;
 }
+
 canvas {
 	border: solid 5px black;
 }
@@ -107,4 +112,37 @@ canvas {
 
 .ge_editor {
 	background-color: black !important;
+    width: 100%;
+    display: block;
+    margin-top:0;
+}
+
+
+.checkpoints {
+        color: $primary;
+        background-color: #ff0000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0 10px 0;
+        span{
+            &:hover {
+                background-color: lighten(black, 10%);
+                text-decoration: none;
+                cursor:pointer;
+            }
+        }
+}
+.disable_link{
+    pointer-events: none;
+}
+
+.disable {
+    background-color: gray !important;
+    content:'ADD';
+
+}
+.disable:hover:after{
+    content:' PROXIMAMENTE';
+    color: black;
 }
