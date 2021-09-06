@@ -5,7 +5,9 @@ weight: 2
 
 ---
 
-Para fomentar la realización de piezas de glsl.
+Para fomentar la realización de piezas de GLSL.
 
-Vamos a generar ofrendas a personas referentes en la comunidad de shaders.
+Vamos a generar ofrendas a personas referentes en la comunidad de shaders, quienes decidieron contribuir enviandonos una **imagen** que los represente y su **shader-mantra**.
+
+
 
