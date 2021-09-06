@@ -8,12 +8,11 @@ summary: " "
 
 <img src="/images/templo/pgonzalezvivo.gif"></img>
 
-[Patricio](http://patriciogonzalezvivo.com/) es un gran maestro y referente.
+[Patricio](http://patriciogonzalezvivo.com/) nació en Buenos Aires. Tiene una gran y reconocida trayectoria como ingeniero, artista y educador. Creador de [Pixel Spirit](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/), [the Book of Shaders](https://thebookofshaders.com/), y muchos otros proyectos open source (de los cuales algunos habilitaron la creación de este curso). 
 
-Humildad, sabiduría y talento. 
+No sólo sus creaciones, tanto en obras como en herramientas, tienen un alto nivel técnico y conceptual; sino que además él posee una humildad y transparencia auténtica, haciéndolo un ser tan especial como inspirador. 
 
-Creador de Pixel Spirit, Book of Shaders, y muchos otros proyectos open source (los cuales habilitaron la creación de este curso).
-
+Curiosidad, simpleza, talento y sabiduría. 
 
 
 <hr>
