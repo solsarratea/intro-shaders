@@ -1,0 +1,247 @@
+<script id="fragmentShader-init" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+   gl_FragColor = vec4(0.5);
+
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+<script id="fragmentShader-0" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders
+precision mediump float;
+
+// Variables uniformes: 
+// puente entre CPU - GPU que nos permite mandar información
+// Por ejemplo : tiempo
+
+uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
+
+void main() {
+    //Declaración de números
+    float r = 1.; // [ r ] := [ 1. ]
+    float g = 0.; // [ g ] := [ 1. ]
+    float b = 1.; // [ b ] := [ 1. ]
+    gl_FragColor = vec4(r,g,b,1.); // [ (r, g ,b , a) ]
+
+    //Declaracion de vectores
+    vec2 rg = vec2(1.);   // [( 1., 1. )]
+    vec3 rgb = vec3(0.960,0.057,0.076); // [( 0.5,0.5,0.5 )]
+
+    //gl_FragColor = vec4(rgb, 1.); // [ (r, g ,b , a) ]
+
+}
+
+
+</script>
+<script id="fragmentShader-1" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders 
+precision mediump float;
+
+// Variables uniformes: 
+// puente entre CPU - GPU que nos permite mandar información
+// Por ejemplo : tiempo
+
+uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
+
+
+ void main() {
+     vec3 color = vec3(0.960,0.113,0.003); // [( 0.5,0.5,0.5 )]
+    
+     //Obtenemos la posición del píxel
+     vec2 uv = gl_FragCoord.xy/u_resolution; // [( x,y )]
+     uv.x *= u_resolution.y/u_resolution.x;
+     
+     color.rb = uv;  //[( r,b )] == [( x,y )]
+     
+     // Mapeamos valores para entender el rango
+     //[( r,b )] == [( 1,0 )] full rojo 
+     //[( r,b )] == [( 0,1 )] full azul
+     //[( r,b )] == [( 1.,1. )] full rojo y azul
+     //[( r,b )] == [( 0.,0. )]  sin rojo, sin azul 
+     //Identificamos el rango de la variable x y de la variable y
+     // !!! [0,1]
+	
+     ////////////////////////////////////////////
+     //Cuento la historia de Descartes y **amamos los sistemas de referencia**
+	 
+     //Posicionamos el centro de la pantalla en el medio
+     uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
+     //color.rb = uv;  //[( r,b )] == [( x,y )]
+    
+     
+     gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
+
+ }
+
+</script>
+<script id="fragmentShader-2" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders
+ precision mediump float;
+
+// Variables uniformes: 
+// puente entre CPU - GPU que nos permite mandar información
+// Por ejemplo : tiempo
+
+uniform float u_time;      // [ contador ]
+uniform vec2 u_resolution; // [( width , height )]
+
+void main() {
+    vec2 uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
+    vec3 color;
+
+    color.rb = uv.xx;  //[( r,b )] == [( x,x )]
+
+    color.rb = cos(uv.xx*10.);  //[( r,b )] == [( cos(x*10.),cos(x*10.) )]
+    // Al explorador de funciones *sabrabrab tram*
+    // http://curso.solquemal.com/herramientas/ninja0/
+
+    color.r = cos(uv.x*10.+u_time);  //[( r )] == [( cos(x*10.) )]
+    color.g = cos(uv.x*uv.x*10.+u_time);  //[( r )] == [( cos(x*10.) )]
+    color.b = cos(uv.x*20.+u_time);  //[( r )] == [( cos(x*10.) )]
+
+
+    gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
+
+}
+
+
+</script>
+
+<script id="fragmentShader-bonus" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 0 - Intro a shaders -  0
+// Usar el Test de http://editor.thebookofshaders.com/
+
+#ifdef GL_ES
+  precision mediump float;
+#endif
+
+  uniform vec2 u_resolution;
+  uniform float u_time;
+
+  void main() {
+      // Obtenemos la posicion del pixel
+      vec2 uv = gl_FragCoord.xy/u_resolution.xy *2.-1.; vec2 st = uv;
+      uv.x *= u_resolution.x/u_resolution.y;
+      
+      //Aplicamos transformaciones
+      
+      // Rotacion: mover el sistema de coordenadas
+      float a = u_time*-0.400;
+      uv.yx *= mat2(cos(a*.2),sin(a),-sin(a),cos(a*.2));
+
+
+      // Escalar: hacer zoom in - zoom out
+      // La linea 25 es equivalente: uv *= min(1./pow(distance(uv,vec2(0.)),2.),10.); 
+      //Comentario: pow(distance(uv,vec2(0.)),2.0); == pow(length(uv),2.0)
+ 	  uv *= min(1./dot(uv,uv),10.); 
+      //Comentario: pow(length(uv),2.0); == dot(uv,uv)
+      
+      // Definimos los valores de color
+      vec3 color;
+      color.r = sin(distance(uv.x,0.)*uv.x+u_time*-0.448);
+      color.b = sin(5.744+distance(uv.y,0.)*uv.y+u_time*0.5);
+      color.g = cos(distance(uv.x,0.)*-uv.x+u_time*0.9);
+      
+      //Me gusta el GLOW WOW! 
+      color *=0.042/dot(color,st.xyy)*1.624;
+      
+      gl_FragColor = vec4(color,1.0);
+
+  } 
+</script>
+
+
+<script type='text/javascript'>
+  window.frag  = document.getElementById( 'fragmentShader-init' ).textContent;
+
+  document.getElementById("init").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-init' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+
+  document.getElementById("checkpointcero").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-0' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointuno").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-1' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointdos").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-2' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("bonus").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-bonus' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+
+  };
+
+  function displayDate()
+  {
+      document.getElementById("demo").innerHTML=Date();
+  }
+
+function loadjscssfile(filename, filetype, callback){
+      if (filetype=="js") { //if filename is a external JavaScript file
+          var fileref = document.createElement('script')
+          fileref.setAttribute("type","text/javascript")
+          fileref.setAttribute("src", filename)
+      }
+      else if (filetype=="css") { //if filename is an external CSS file
+          var fileref = document.createElement("link")
+          fileref.setAttribute("rel", "stylesheet")
+          fileref.setAttribute("type", "text/css")
+          fileref.setAttribute("href", filename)
+      }
+
+      fileref.onload = callback;
+      fileref.onreadystatechange = callback;
+
+      if (typeof fileref != "undefined") {
+          document.getElementsByTagName("head")[0].appendChild(fileref)
+      }
+  }
+
+
+  window.onload = function() {
+      if (window.GlslEditor && window.GlslEditor) {
+          init();
+      }
+      else {
+          console.log('Try to load a local glslEditor');
+          loadjscssfile('src/glslCanvas/build/GlslCanvas.js', 'js');
+          loadjscssfile('src/glslEditor/build/glslEditor.css', 'css');
+          loadjscssfile('src/glslEditor/build/glslEditor.js', 'js', init);
+      }
+  };
+
+  function init() {
+     
+      window.glslEditor = new GlslEditor('#glsl_clase0', {
+          canvas_height: 500,
+          canvas_width: 700,
+          canvas_draggable: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag: window.frag,
+          multipleBuffers: true,
+      });
+  }
+</script>
