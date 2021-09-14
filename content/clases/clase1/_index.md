@@ -19,7 +19,7 @@ Si estas participando del curso, tenes que utilizar el código que te mandamos p
 Como la virtualidad suele ser desafiante, creemos que un documento vivo y escrito por les participantes ayuda a intercambiar ideas.
  
 ### Contenido teórico e introductorio
- <span class="button-red "><a target="_blank" href="">(っಠ‿ಠ)っ°° SLIDES</a></span>
+ <span class="button-red "><a target="_blank" href="https://docs.google.com/presentation/d/e/2PACX-1vQmwJNMVZKok4oruXEI8ebye856zGzBMdjqNx1jk1nrAf54OJ1NJ_bT1j-snuT34K7ZsxTXRXUiEl5a/pub?start=false&loop=false&delayms=3000">(っಠ‿ಠ)っ°° SLIDES</a></span>
 
 
 ### Editor online y checkpoints
@@ -31,6 +31,15 @@ Este es el **core** de la clase: la escritura del script, con checkpoints y come
 
 Esta sección es adicional a la clase "virtual-presencial".
 Pero como nos quedamos con muchas ganas de seguir explorando, sugiero:
+
+## + Script
+
+Escribir [en el editor de The Book of Shaders](http://editor.thebookofshaders.com/) un script basado en los checkpoints.
+Probar de usar funciones de distancia de signo:
+
+[Lista de funciones](https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm)
+
+[Lectura adicional](https://thebookofshaders.com/07/) 
 
 ## + Ofrendas
  <span class="button-red"><a target="_blank" href="/templo">IR AL TEMPLO (♥‿♥)</a></span>
