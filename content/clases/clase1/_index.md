@@ -39,7 +39,11 @@ Probar de usar funciones de distancia de signo:
 
 [Lista de funciones](https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm)
 
-[Lectura adicional](https://thebookofshaders.com/07/) 
+[Lectura adicional: The Book of Shaders](https://thebookofshaders.com/07/)
+
+[Vídeo sobre derivación de SDF Box](https://www.youtube.com/watch?v=62-pRVZuS5c)
+
+[Vídeo sobre derivación de SDF Línea](https://www.youtube.com/watch?v=PMltMdi1Wzg)
 
 ## + Ofrendas
  <span class="button-red"><a target="_blank" href="/templo">IR AL TEMPLO (♥‿♥)</a></span>
