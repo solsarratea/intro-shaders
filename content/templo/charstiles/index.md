@@ -8,24 +8,24 @@ summary: " "
 
 <img src="/images/templo/char.gif"></img>
 
-[Char](http://charstiles.com/) es de USA.  Artista, educadora y programadora. Su trabajo es deslumbrante, e inspirador. Es parte del Livecoding NYC.
-Ninja del Raymarching, y aficionada por los emails. Participo en [Github Satellites](https://www.youtube.com/watch?v=-8YgwVJQlYw), [MUTEK](https://www.youtube.com/watch?v=hdzen9_86D4), entre otras.
+[Char](http://charstiles.com/) es de USA.  Artista multi disciplinaria, educadora y programadora. Su trabajo es deslumbrante, e inspirador. Es parte del Livecoding NYC.
+Ninja del Raymarching, y aficionada por los emails. Comparto una de las performances que más disfruté [Github Satellites](https://www.youtube.com/watch?v=-8YgwVJQlYw), y un workshop sobre livecoding shaders que dió en [MUTEK](https://www.youtube.com/watch?v=hdzen9_86D4).
 
-Comparto un fragmento de un cuento de **Eduardo Galeano**, para encontrar palabras que la describan:
+Para encontrar palabras que la describen, elegí  un fragmento del cuento **"El mundo"** de **Eduardo Galeano**:
 
 >..otros arden la vida con tantas ganas
 >que no se puede mirarlos sin parpadear,
 >y quien se acerca, se enciende.
-> **"El mundo"**
 
 
-Maestra de shaders.
-
-Sororidad, creatividad, raymarching y libra.
+Sororidad, compañera, compromiso social, creatividad, inteligencia y libra.
 
 
 <hr>
 
+### **Maestra de shaders**
+
+(✿´°‿°)つ━☆・*。 pARTner in ~~crime~~ shadertime.  <b>。*・☆-⊂(°‿°´✿)</b>
 
 
  <span class="button-red"><a target="_blank" href="https://templo-shader.glitch.me/">OFRENDAR.+:｡(ﾉ･ω･)ﾉﾞ+</a></span>
