@@ -1,5 +1,6 @@
 <div class="summary mb-2">
 
+  {{ if not .Params.display }}
     <h1 class="title-summary">{{ .Title }}</h1>
      <hr>
      <div class="img-container">
@@ -13,5 +14,5 @@
        <br> <br>
      </div>
   <p>{{ .Summary }}</p>
-
+{{ end }}
 </div>

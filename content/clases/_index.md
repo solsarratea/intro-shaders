@@ -6,3 +6,6 @@ weight: 2
 ---
 
 En las siguientes secciones se van a hostear todo el contenido de las clases, con el fin de que sea público y accesible.
+
+Para cualquier consulta enviarme un correo electrónico a solquemal [a] contact.com.
+

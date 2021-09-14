@@ -1,17 +1,24 @@
 <script id="fragmentShader-init" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
-// Title: Clase 0 - Intro a shaders
+// Title: Clase 1 - Descripción de figuras
 precision mediump float;
 
+//Variables uniformes: puentes entre CPU y GPU
+//-------------------------------
 uniform float u_time;
 uniform vec2 u_resolution;
 
+// main: función principal del shader
 void main() {
-   gl_FragColor = vec4(0.5);
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  // Factor de escala
+    // Nota: eventualmente este canvas al tener misma alto y ancho estamos multiplicando por 1 ->
+    // Rango de UV = [0,1]x[0x1]
 
+    vec3 color;
+    color.rb = pos; // Asignamos en los canales rojo y azul los valores de UV
+
+    gl_FragColor = vec4(color,1.);
 }
-
-
-
 
 
 
@@ -21,149 +28,242 @@ void main() {
 
 </script>
 <script id="fragmentShader-0" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
-// Title: Clase 0 - Intro a shaders
+// Title: Clase 1 - Descripción de figuras
 precision mediump float;
 
-// Variables uniformes: 
-// puente entre CPU - GPU que nos permite mandar información
-// Por ejemplo : tiempo
+uniform float u_time;
+uniform vec2 u_resolution;
 
-uniform float u_time;      // [ contador ]
-uniform vec2 u_resolution; // [( width , height )]
-
-void main() {
-    //Declaración de números
-    float r = 1.; // [ r ] := [ 1. ]
-    float g = 0.; // [ g ] := [ 1. ]
-    float b = 1.; // [ b ] := [ 1. ]
-    gl_FragColor = vec4(r,g,b,1.); // [ (r, g ,b , a) ]
-
-    //Declaracion de vectores
-    vec2 rg = vec2(1.);   // [( 1., 1. )]
-    vec3 rgb = vec3(0.960,0.057,0.076); // [( 0.5,0.5,0.5 )]
-
-    //gl_FragColor = vec4(rgb, 1.); // [ (r, g ,b , a) ]
-
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
 }
-
-
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+void main() {
+   	vec2 pos = uv(); 
+    vec3 color;
+    
+	float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); // "Discretiza" el valor de dx. Vale 0 si dx< 0.5 y vale 1 sino.
+    //eje1 = smoothstep(0.3,0.6,dx); // "Suavemente Discretiza" el valor dx. 
+    //Vale 0 si dx< 0.3. Vale 1 si dx>0.6. Y es suave entre 0.3 y 0.6 (interpola linealmente entre 0 y 1)
+  	eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+	//De la misma manera definimos el eje2
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+    
+    //Sugerencia: cambiar la linea 23 uv() por uvN()
+    gl_FragColor = vec4(color,1.);
+}
 </script>
 <script id="fragmentShader-1" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
-// Title: Clase 0 - Intro a shaders 
+// Title: Clase 1 - Descripción de figuras
 precision mediump float;
 
-// Variables uniformes: 
-// puente entre CPU - GPU que nos permite mandar información
-// Por ejemplo : tiempo
+uniform float u_time;
+uniform vec2 u_resolution;
 
-uniform float u_time;      // [ contador ]
-uniform vec2 u_resolution; // [( width , height )]
-
-
- void main() {
-     vec3 color = vec3(0.960,0.113,0.003); // [( 0.5,0.5,0.5 )]
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+void main() {
+   	vec2 pos = uv(); vec3 color;
     
-     //Obtenemos la posición del píxel
-     vec2 uv = gl_FragCoord.xy/u_resolution; // [( x,y )]
-     uv.x *= u_resolution.y/u_resolution.x;
-     
-     color.rb = uv;  //[( r,b )] == [( x,y )]
-     
-     // Mapeamos valores para entender el rango
-     //[( r,b )] == [( 1,0 )] full rojo 
-     //[( r,b )] == [( 0,1 )] full azul
-     //[( r,b )] == [( 1.,1. )] full rojo y azul
-     //[( r,b )] == [( 0.,0. )]  sin rojo, sin azul 
-     //Identificamos el rango de la variable x y de la variable y
-     // !!! [0,1]
-	
-     ////////////////////////////////////////////
-     //Cuento la historia de Descartes y **amamos los sistemas de referencia**
-	 
-     //Posicionamos el centro de la pantalla en el medio
-     uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
-     //color.rb = uv;  //[( r,b )] == [( x,y )]
+    float radio = distance(pos, vec2(0.));
+    float angulo = atan(pos.y,pos.x);
     
+    vec2 polar = vec2(radio, angulo);
+    
+   	//Visualizamos las coordenadas polares
+    //-------------------------------
+    color.r = cos(polar.x*10.+u_time);
+    color.b = cos(polar.y*20.+u_time);
+    
+    // Combinamos con coordenadas UV
+    color.r = cos(pos.x/polar.x*10.+u_time);
+    
+    //Dibujamos círculo
+    float humo = (1.+0.3*sin(u_time));  
+    color.g = 1.-smoothstep(0.19,0.4,length(pos)) * humo;
      
-     gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
 
- }
+  
+    gl_FragColor = vec4(color,1.);
+}
 
 </script>
 <script id="fragmentShader-2" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
-// Title: Clase 0 - Intro a shaders
- precision mediump float;
+// Title: Clase 1 - Intro a shaders 
+precision mediump float;
 
-// Variables uniformes: 
-// puente entre CPU - GPU que nos permite mandar información
-// Por ejemplo : tiempo
+uniform float u_time;      
+uniform vec2 u_resolution; 
 
-uniform float u_time;      // [ contador ]
-uniform vec2 u_resolution; // [( width , height )]
-
-void main() {
-    vec2 uv = gl_FragCoord.xy/u_resolution * 2. -1.; // [( x,y )]
-    vec3 color;
-
-    color.rb = uv.xx;  //[( r,b )] == [( x,x )]
-
-    color.rb = cos(uv.xx*10.);  //[( r,b )] == [( cos(x*10.),cos(x*10.) )]
-    // Al explorador de funciones *sabrabrab tram*
-    // http://curso.solquemal.com/herramientas/ninja0/
-
-    color.r = cos(uv.x*10.+u_time);  //[( r )] == [( cos(x*10.) )]
-    color.g = cos(uv.x*uv.x*10.+u_time);  //[( r )] == [( cos(x*10.) )]
-    color.b = cos(uv.x*20.+u_time);  //[( r )] == [( cos(x*10.) )]
-
-
-    gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
-
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas en rango [0,√2]x[-PI.,PI.] */
+    vec2 pos = uv();
+    float radio = length(pos); float angulo = atan(pos.y,pos.x);
+    return vec2(radio,angulo);
 }
 
+float sdMoon(vec2 p, float d, float ra, float rb )
+{
+    p.y = abs(p.y);
+    float a = (ra*ra - rb*rb + d*d)/(2.0*d);
+    float b = sqrt(max(ra*ra-a*a,0.0));
+    if( d*(p.x*b-p.y*a) > d*d*max(b-p.y,0.0) )
+          return length(p-vec2(a,b));
+    return max( (length(p          )-ra),
+               -(length(p-vec2(d,0))-rb));
+}
+
+void main() {
+  vec2 pos = uv(); vec2 polar = polares(); vec3 color;
+
+  // Transformaciones en el espacio
+  //--------------------------------
+  //ZOOM
+  float scale = sin(u_time*.5)*0.8; // Factor de escala
+  //pos = pos* (1.+scale); 
+  // Al MULTIPLICAR por un factor de escala se genera el Zoom in/out. 
+  // En la linea anterior si el valor scale es negativo se genera un Zoom Out, caso contrario un Zoom In
+
+  // TRASLADAR 
+  //pos = pos + vec2(cos(u_time),sin(u_time))*.15; 
+  // Al SUMAR se traslada acorde a los ejes de coordenadas
+
+  // Introducimos a las SDF : Funciones de distancias de signo
+  //--------------------------------
+  // Describimos figuras a partir de las posiciones de los pixeles
+  float rombo    = smoothstep(0.72,0.,distance(pos.x,0.)+distance(pos.y*.5,0.))-scale*0.5;
+  float cuadrado = smoothstep(0.4,0.,max(abs(pos.x*.5),abs(pos.y*.5)))-scale*.5;
+  float circulo  = smoothstep(.5+scale*.5,0.,length(pos));
+
+  color.r = rombo;
+  color.b = cuadrado;
+  color.g = circulo;
+
+  //Introducimos a las SDF : Funciones de distancias de signo
+  //--------------------------------
+  // https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm
+
+  //float moon= sdMoon(pos, .3,0.75,0.6);
+  //moon = smoothstep(0.03,0.,moon);
+  //color = mix(vec3(moon),color,moon);
+
+
+  gl_FragColor = vec4(color, 1.); // [ (r, g ,b , a) ]
+
+}
 
 </script>
 
 <script id="fragmentShader-bonus" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
-// Title: Clase 0 - Intro a shaders -  0
-// Usar el Test de http://editor.thebookofshaders.com/
+// Title: Clase 1 - Intro a shaders 
+precision mediump float;
 
-#ifdef GL_ES
-  precision mediump float;
-#endif
+uniform float u_time;      
+uniform vec2 u_resolution; 
 
-  uniform vec2 u_resolution;
-  uniform float u_time;
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares_alt(){
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.; pos *=mat2(cos(u_time),sin(u_time),-sin(u_time),cos(u_time));
+    float radio = length(pos); float angulo = atan(pos.x,pos.y)/(2.*3.14);
+    return vec2(radio,angulo);
+}
 
-  void main() {
-      // Obtenemos la posicion del pixel
-      vec2 uv = gl_FragCoord.xy/u_resolution.xy *2.-1.; vec2 st = uv;
-      uv.x *= u_resolution.x/u_resolution.y;
-      
-      //Aplicamos transformaciones
-      
-      // Rotacion: mover el sistema de coordenadas
-      float a = u_time*-0.400;
-      uv.yx *= mat2(cos(a*.2),sin(a),-sin(a),cos(a*.2));
+//Cosine Palettes
+//https://iquilezles.org/www/articles/palettes/palettes.htm
+vec3 cosPalette( in float t )
+{
+	vec3 a = vec3(0.815,0.815,0.815);
+    vec3 b = vec3(0.405,0.405,0.405);
+    vec3 c = vec3(1.,1.,0.5);
+    vec3 d = vec3(.00,0.15,0.20);
+    
+    return a + b*cos( 6.28318*(c*t+d) );
+}
 
 
-      // Escalar: hacer zoom in - zoom out
-      // La linea 25 es equivalente: uv *= min(1./pow(distance(uv,vec2(0.)),2.),10.); 
-      //Comentario: pow(distance(uv,vec2(0.)),2.0); == pow(length(uv),2.0)
- 	  uv *= min(1./dot(uv,uv),10.); 
-      //Comentario: pow(length(uv),2.0); == dot(uv,uv)
-      
-      // Definimos los valores de color
-      vec3 color;
-      color.r = sin(distance(uv.x,0.)*uv.x+u_time*-0.448);
-      color.b = sin(5.744+distance(uv.y,0.)*uv.y+u_time*0.5);
-      color.g = cos(distance(uv.x,0.)*-uv.x+u_time*0.9);
-      
-      //Me gusta el GLOW WOW! 
-      color *=0.042/dot(color,st.xyy)*1.624;
-      
-      gl_FragColor = vec4(color,1.0);
+void main() {
+    vec2 pos = uv(); vec2 polar = polares_alt(); vec3 color;
+    
+    // Definimos las p-normas
+    //-------------------------------
+    //https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm
+    
+    float p = cos(u_time*0.2)*1.8+2.; // p fluctua entre 0.2 y 3.8
+    float dist = pow(pow(pos.x,p) + pow(pos.y,p),1./p); //Calculamos la distancia con la p-norma
+    dist -=cos(dist-pos.x*p*2.*pos.y+u_time)*0.1;   //Agregar movimiento/displacemente en el contorno de la figura     
+    dist = smoothstep(0.9,0.4,dist); // Refineamos el contorno 
+    color = mix(vec3(0.),cosPalette(dist+u_time*0.1),dist); //Rellenamos en la figura usando la Cosine Color Pallete
 
-  } 
+
+    // Inspiraciones en la espiral de Arquimedes
+    //-------------------------------
+    float espiral = -0.076/cos(polar.x*1.3+polar.y*.6+u_time*.1);
+    color += espiral;
+    
+    gl_FragColor = vec4(color, 1.);
+
+}
+
+
+
+
+
 </script>
 
 
