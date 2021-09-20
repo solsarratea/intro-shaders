@@ -1,0 +1,485 @@
+<script id="fragmentShader-init" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 2 - Descripción de figuras
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas representadas como coordenadas polares */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    float radio = length(pos);
+    float angulo = atan(pos.y,pos.x);
+	return vec2(radio, angulo);
+}
+void main() {
+   	vec2 pos = uv(); 
+    vec3 color;
+    
+	float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); // "Discretiza" el valor de dx. Vale 0 si dx&lt; 0.5 y vale 1 sino.
+    //eje1 = smoothstep(0.3,0.6,dx); // "Suavemente Discretiza" el valor dx. 
+    //Vale 0 si dx&lt; 0.3. Vale 1 si dx>0.6. Y es suave entre 0.3 y 0.6 (interpola linealmente entre 0 y 1)
+  	eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+	//De la misma manera definimos el eje2
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+
+    gl_FragColor = vec4(color,1.);
+}
+
+</script>
+<script id="fragmentShader-0" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 2 - Descripción de figuras
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas representadas como coordenadas polares */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    float radio = length(pos);
+    float angulo = atan(pos.y,pos.x);
+	return vec2(radio, angulo);
+}
+
+vec3 ejes(vec2 pos){
+    vec3 color = vec3(0.);
+    float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+    return color;
+}
+
+vec2 rotacion (vec2 pos, float cantidad){
+    return  pos * mat2(cos(cantidad),sin(cantidad),-sin(cantidad),cos(cantidad));
+}
+void main() {
+   	vec2 pos = uv(); 
+   
+    //--------------------------------------
+    //Transformaciones en el espacio
+    
+    //Trasladar
+    pos.x = pos.x + sin(u_time)*0.5; //Sumo un oscilador en el eje X
+    pos.y = pos.y + cos(u_time)*0.8; //Sumo un oscilador en el eje Y
+    
+    //Escalar (zoom in - zoom out)
+    float zoom = 0.792; // Probar distintos valores en el rango [0.,2.]
+    pos = pos * zoom; //Multiplicamos por un factor de escala
+
+    //Rotar
+    pos = rotacion(pos, u_time*0.4); //Multiplicamos por un factor de escala
+      
+    //--------------------------------------
+    //Dibujamos figuras y eje
+    
+    float circulo = smoothstep(.4,.38,length(pos)); 
+    // `length(pos)` es equivalente `distance(vec2(0), pos)`
+    //Es decir, mide la distancia con respecto al origen de coordenadas
+    vec3 color = ejes(pos);
+    color += circulo;
+    
+	
+    gl_FragColor = vec4(color,1.);
+}
+
+</script>
+<script id="fragmentShader-1" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 2 - Descripción de figuras
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas representadas como coordenadas polares */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+    float radio = length(pos);
+    float angulo = atan(pos.y,pos.x);
+	return vec2(radio, angulo);
+}
+
+vec3 ejes(vec2 pos){
+    vec3 color = vec3(0.);
+    float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+    return color;
+}
+
+float tablero(vec2 pos, float c){
+    return smoothstep(0.,0.02,sin(pos.x *c)*sin(pos.y*c));
+}
+
+vec2 rotacion (vec2 pos, float cantidad){
+    return  pos * mat2(cos(cantidad),sin(cantidad),-sin(cantidad),cos(cantidad));
+}
+void main() {
+   	vec2 pos = uv(); 
+    vec2 polares = polares();
+   
+    //--------------------------------------
+    //Transformaciones  no lineales en el espacio
+	
+    //1. Usando la distancia al cuadrado: 
+    //1.1 
+    //pos = pos + pos * pow(distance(pos,vec2(0)),2.);
+    //1.2 
+    //pos = pos + pos * dot(pos,pos);
+   	//1.3 
+     pos = pos + pos * dot(pos,pos)*sin(u_time*0.2);
+    
+    //2. Usando coordenadas polares
+	 //pos = pos + pow(polares.r,2.)*2.;
+     pos = pos + polares.y+u_time*0.1;
+    
+    //--------------------------------------
+    //Dibujamos figuras y eje
+    
+    vec3 color;
+    color +=ejes(pos); 
+    //--------------------------------------
+    //Adicional : 
+    //La funcion ejes dibuja los ejes de representacion en el rango [-1.,1.]
+    //Al aplicar transformaciones en el espaico el rango es [-n.,n.], con n > 1. 
+    //Luego usamos la funcion `fract` para visibilar la parte fraccionaria 
+    //Descomentar la linea de abajo para visualizuarlo.
+    color += ejes(fract(pos));
+    //--------------------------------------
+    color +=tablero(pos,10.);
+    
+	
+    gl_FragColor = vec4(color,1.);
+}
+
+
+
+</script>
+
+<script  id="fragmentShader-2" type="x-shader/x-fragment">// Author: Sol Sarratea @solquemal
+// Title: Clase 2 - Descripción de figuras
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas representadas como coordenadas polares */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+    float radio = length(pos);
+    float angulo = atan(pos.y,pos.x);
+	return vec2(radio, angulo);
+}
+
+vec3 ejes(vec2 pos){
+    vec3 color = vec3(0.);
+    float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+    return color;
+}
+
+float tablero(vec2 pos, float c){
+    return smoothstep(0.,0.02,sin(pos.x *c)*sin(pos.y*c));
+}
+
+vec2 rotacion (vec2 pos, float cantidad){
+    return  pos * mat2(cos(cantidad),sin(cantidad),-sin(cantidad),cos(cantidad));
+}
+float reflejo(inout vec2 pos, float angle){
+    vec2 normal = vec2(cos(angle),sin(angle));
+    float d = dot(pos, normal);
+    pos -= normal*min(0.,d)*2.;
+    return smoothstep(0.03,0.,abs(d));
+}
+
+void main() {
+    //0. Representamos el espacio 
+   	vec2 pos = uv(); 
+   
+    //1. Transformaciones en el espacio
+  	pos =pos * 0.5+vec2(0.5,0.);	
+    float angulo = u_time*0.2;
+    float espejo = reflejo(pos,angulo);
+   
+    
+    //1.5 Transformo y coloreo en LOOP
+    vec3 color;
+   	const int max_pasos = 5; //Sugerencia: cambiar la cantidad maxima de pasos
+    for (int paso =0; paso < max_pasos ;paso ++){
+        /* En cada paso: escalamos, trasladamos y reflejamos el espacio)*/
+      pos *= 2.;
+      pos.x -= 1.;
+      reflejo(pos,angulo);
+      color += tablero(pos,4.) *0.760/float(max_pasos);
+    }
+    
+    //2. Coloreo
+ 	//color.g += espejo;
+    color.r +=tablero(pos,2.)*1.648/float(max_pasos);
+    color.g +=tablero(pos,6.)*1.296/float(max_pasos);
+	color.b +=tablero(pos,3.)*1.120/float(max_pasos);
+
+    color = color*dot(color,color)*0.6;
+    
+    //Sugerencia: cambiar la línea 71 por otro sistema de coordenadas
+    gl_FragColor = vec4(color,1.);
+}
+
+
+  
+
+ </script>
+
+<script id="fragmentShader-bonus" type="x-shader/x-fragment">// Author: Sol Sarrat
+  // Author: Sol Sarratea @solquemal
+// Title: Clase 2 - Descripción de figuras
+precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Declaramos funciones para usar dentro de la función principal
+vec2 uvN(){
+    /* Devuelve las posiciones del canvas en rango [0.,1.]x[0.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;  
+	return pos;
+}
+vec2 uv(){
+    /* Devuelve las posiciones del canvas en rango [-1.,1.]x[-1.,1.] */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+	return pos;
+}
+vec2 polares(){
+     /* Devuelve las posiciones del canvas representadas como coordenadas polares */
+    vec2 pos = gl_FragCoord.xy/u_resolution; 
+    pos.x *= u_resolution.y/u_resolution.x;
+    pos = pos *2.-1.;
+    float radio = length(pos);
+    float angulo = atan(pos.y,pos.x);
+	return vec2(radio, angulo);
+}
+
+vec3 ejes(vec2 pos){
+    vec3 color = vec3(0.);
+    float dx = distance(pos.x,0.); 
+    float eje1 = step(0.5,dx); eje1 = 1.-step(0.01,dx);
+    color.r = eje1;
+    
+    float dy = distance(pos.y,0.);
+    float eje2 = 1.-step(0.01,dy);
+    color.b = eje2;
+    return color;
+}
+
+float tablero(vec2 pos, float c){
+    return smoothstep(0.,0.02,sin(pos.x *c)*sin(pos.y*c));
+}
+
+vec2 rotacion (vec2 pos, float cantidad){
+    return  pos * mat2(cos(cantidad),sin(cantidad),-sin(cantidad),cos(cantidad));
+}
+float reflejo(inout vec2 pos, float angle){
+    vec2 normal = vec2(cos(angle),sin(angle));
+    float d = dot(pos, normal);
+    pos -= normal*min(0.,d)*2.;
+    return smoothstep(0.03,0.,abs(d));
+}
+
+void main() {
+   	vec2 pos = uv(); 
+    vec2 p = polares();
+   
+    //1. Transformaciones en el espacio
+  	 pos = pos+rotacion(pos,u_time*2.)+p.y*p.r+dot(pos,pos);
+    
+    	
+    float angulo = u_time*0.2;
+    //1.5 Transformo y coloreo en LOOP
+        vec3 color;
+   	const int max_pasos = 2;
+    for (int paso =0; paso < max_pasos ;paso ++){
+      pos *= 2.;
+      pos.x -= 1.+sin(pos.y*.2)*0.1;
+      reflejo(pos,angulo);
+      color += tablero(pos,3.) *-0.136/float(max_pasos);
+    }
+    //2. Coloreo
+
+    color.r +=tablero(pos,2.)*1./float(max_pasos);
+    color.g +=tablero(pos,5.)*1./float(max_pasos);
+	color.b +=tablero(pos,3.)*1./float(max_pasos);
+
+    color *= 0.136/cos(dot(color, pos.xyx)); 
+    color *= color +0.6;
+    gl_FragColor = vec4(color,1.);
+}
+
+
+  
+
+
+
+</script>
+
+
+<script type='text/javascript'>
+  window.frag  = document.getElementById( 'fragmentShader-init' ).textContent;
+
+  document.getElementById("init").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-init' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+
+  document.getElementById("checkpointcero").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-0' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointuno").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-1' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("checkpointdos").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-2' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+  };
+  document.getElementById("bonus").onclick=function(){
+      window.frag = document.getElementById( 'fragmentShader-bonus' ).textContent;
+      window.glslEditor.editor.setValue(window.frag)
+
+  };
+
+  function displayDate()
+  {
+      document.getElementById("demo").innerHTML=Date();
+  }
+
+function loadjscssfile(filename, filetype, callback){
+      if (filetype=="js") { //if filename is a external JavaScript file
+          var fileref = document.createElement('script')
+          fileref.setAttribute("type","text/javascript")
+          fileref.setAttribute("src", filename)
+      }
+      else if (filetype=="css") { //if filename is an external CSS file
+          var fileref = document.createElement("link")
+          fileref.setAttribute("rel", "stylesheet")
+          fileref.setAttribute("type", "text/css")
+          fileref.setAttribute("href", filename)
+      }
+
+      fileref.onload = callback;
+      fileref.onreadystatechange = callback;
+
+      if (typeof fileref != "undefined") {
+          document.getElementsByTagName("head")[0].appendChild(fileref)
+      }
+  }
+
+
+  window.onload = function() {
+      if (window.GlslEditor && window.GlslEditor) {
+          init();
+      }
+      else {
+          console.log('Try to load a local glslEditor');
+          loadjscssfile('src/glslCanvas/build/GlslCanvas.js', 'js');
+          loadjscssfile('src/glslEditor/build/glslEditor.css', 'css');
+          loadjscssfile('src/glslEditor/build/glslEditor.js', 'js', init);
+      }
+  };
+
+  function init() {
+     
+      window.glslEditor = new GlslEditor('#glsl_clase0', {
+          canvas_height: 500,
+          canvas_width: 700,
+          canvas_draggable: true,
+          lineNumbers: true,
+          theme:'midnight',
+          frag: window.frag,
+          multipleBuffers: true,
+      });
+  }
+</script>

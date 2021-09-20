@@ -96,6 +96,10 @@
   {{ partial "glsl-aux-clase1.html" . }}
   {{ end }}
 
+  {{ if (eq .Params.display "clase2") }}
+  {{ partial "glsl-aux-clase2.html" . }}
+  {{ end }}
+
   {{ partial "google-analytics.html" . }}
 
 </body>
