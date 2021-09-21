@@ -1,5 +1,5 @@
 ---
-title: Inigo Quiles
+title: Inigo Quilez
 date: 2021-08-17T02:13:03-03:00
 boton: "conocer"
 barra: "templo"
