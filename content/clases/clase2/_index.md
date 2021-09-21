@@ -19,7 +19,7 @@ Si estas participando del curso, tenes que utilizar el código que te mandamos p
 Como la virtualidad suele ser desafiante, creemos que un documento vivo y escrito por les participantes ayuda a intercambiar ideas.
  
 ### Contenido teórico e introductorio
- <span class="button-red "><a target="_blank" href="https://docs.google.com/presentation/d/e/2PACX-1vQmwJNMVZKok4oruXEI8ebye856zGzBMdjqNx1jk1nrAf54OJ1NJ_bT1j-snuT34K7ZsxTXRXUiEl5a/pub?start=false&loop=false&delayms=3000">(っಠ‿ಠ)っ°° SLIDES</a></span>
+ <span class="button-red "><a target="_blank" href="https://docs.google.com/presentation/d/1aDRFrM5us8vLGZeCIwNTVf3SMhEoWuSevJY_OR8xp1Q/edit#slide=id.g84efe72288_0_30">(っಠ‿ಠ)っ°° SLIDES</a></span>
 
 
 ### Editor online y checkpoints
@@ -29,11 +29,17 @@ Este es el **core** de la clase: la escritura del script, con checkpoints y come
 
 <hr>
 
-Esta sección es adicional a la clase "virtual-presencial".
-Pero como nos quedamos con muchas ganas de seguir explorando, sugiero:
+## + Editores de shaders para hacer livecoding
 
-## + Script
+[The_Force](https://shawnlawson.github.io/The_Force/): proyecto open source creado por Shawn Lawson
 
+- Agregar estas lineas 
+```
+float u_time = time;
+vec2 u_resolution = resolution;
+```
+
+[KodeLife](https://hexler.net/kodelife)
 
 ## + Ofrendas
  <span class="button-red"><a target="_blank" href="/templo">IR AL TEMPLO (♥‿♥)</a></span>
