@@ -19,7 +19,7 @@ Si estas participando del curso, tenes que utilizar el código que te mandamos p
 Como la virtualidad suele ser desafiante, creemos que un documento vivo y escrito por les participantes ayuda a intercambiar ideas.
  
 ### Contenido teórico e introductorio
- <span class="button-red "><a target="_blank" href="https://docs.google.com/presentation/d/1aDRFrM5us8vLGZeCIwNTVf3SMhEoWuSevJY_OR8xp1Q/edit#slide=id.g84efe72288_0_30">(っಠ‿ಠ)っ°° SLIDES</a></span>
+ <span class="button-red "><a target="_blank" href="https://docs.google.com/presentation/d/e/2PACX-1vQjo1-Z9ZIcG2e64llHz7V16MEXXmnCLqiwmd2hXcE0kDpZD2L-vuWo0--E_RGsh_LAS1HzMn4IQTnW/pub?start=false&loop=false&delayms=3000">(っಠ‿ಠ)っ°° SLIDES</a></span>
 
 
 ### Editor online y checkpoints
